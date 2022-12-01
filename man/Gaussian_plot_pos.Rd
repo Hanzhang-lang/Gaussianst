@@ -2,22 +2,25 @@
 % Please edit documentation in R/Gaussian_process.R
 \name{Gaussian_plot_pos}
 \alias{Gaussian_plot_pos}
-\title{Plot using result from Gaussian process}
+\title{Gaussian_plot_pos}
 \usage{
 Gaussian_plot_pos(Xtest, Xtrain, ytrain)
 }
 \arguments{
-\item{Xtest}{input test matrix}
+\item{Xtest}{input test matrix, same as function Gaussian_reg_fit_pre}
 
-\item{Xtrain}{input training matrix X}
+\item{Xtrain}{input training matrix X, same as function Gaussian_reg_fit_pre}
 
-\item{ytrain}{input training vector y}
+\item{ytrain}{input training vector y, same as function Gaussian_reg_fit_pre}
 }
 \value{
 plot func, no return variable
 }
 \description{
 Plot using result from Gaussian process
+}
+\details{
+plot result after gaussian process regression, including measuring uncertainty
 }
 \examples{
 Xtest = seq(-5, 5, by=10/49)

@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Han", "Zhang", , "1214008796@qq.com", role = c("aut", "cre"),
            )
-Description: code for implementing gaussian process regression, including visualizing for uncertainty measuar At the same time, the package can be used to make predictions under three different scenatios:(i) temporal prediction: predicting case counts for future time periods, leading to predicting outcome for each location in the future(ii)spatial prediction: predicting case counts for unseen locations, leading to predicting outcome spread within the same time frame in other locations(iii) spatiotemporal prediction: predicting case counts for unseen location and future time period pairs, leading to predicting outcome spread to new locations in the future
+Description: code for implementing gaussian process regression
 License: FALSE
 Encoding: UTF-8
 Imports: ggplot2, Rcpp, RcppArmadillo

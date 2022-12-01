@@ -6,7 +6,6 @@
 #'To check whether build package successfully
 #'@param x  mat
 #'@param n int
-#'@useDynLib Gaussianst
 #'@import Rcpp
 #'@import RcppArmadillo
 vec1 <- function(x, n) {
@@ -18,8 +17,8 @@ vec1 <- function(x, n) {
 #'calculate the exponential covariance function
 #'@param x  vec
 #'@param y vec
-#'@param params list for theta
 #'@useDynLib Gaussianst
+#'@param params list for theta
 #'@import Rcpp
 #'@import RcppArmadillo
 #'@export

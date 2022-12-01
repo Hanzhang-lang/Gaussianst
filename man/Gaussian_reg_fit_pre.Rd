@@ -2,7 +2,7 @@
 % Please edit documentation in R/Gaussian_process.R
 \name{Gaussian_reg_fit_pre}
 \alias{Gaussian_reg_fit_pre}
-\title{One dimensional gaussian process regression}
+\title{Gaussian_reg_fit_pre}
 \usage{
 Gaussian_reg_fit_pre(
   X,
@@ -15,25 +15,28 @@ Gaussian_reg_fit_pre(
 )
 }
 \arguments{
-\item{X}{input matrix}
+\item{X}{input matrix for training}
 
-\item{y}{input value}
+\item{y}{input value y}
 
 \item{Xtest}{predict matrix}
 
-\item{alpha}{error parameter}
+\item{alpha}{error parameter, \strong{default:1e-10}}
 
-\item{kernel}{kernel used in gaussian process, by default we use exponential cov}
+\item{kernel}{kernel used in gaussian process, by default we use \strong{exponential cov} i.e. RBF kernel}
 
-\item{theta}{parameters for kernel}
+\item{theta}{parameters for kernel function}
 
-\item{plot_f}{plot f_prior or not}
+\item{plot_f}{whether plot f_prior or not}
 }
 \value{
 a list containing posterior mean, std, posterior sample and marginal likelihood
 }
 \description{
-naive implementation for gaussian process regression
+One dimensional Gaussian Process Regression
+}
+\details{
+naiive implementation for one dimensional gaussian process regression, which first calculates prior, then uses bayes rules for posterior
 }
 \examples{
 x <- seq(-20,20,0.1)

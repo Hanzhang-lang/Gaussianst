@@ -30,6 +30,7 @@ bool vec1(arma::mat x, int n) {
 //'calculate the exponential covariance function
 //'@param x  vec
 //'@param y vec
+//'@useDynLib Gaussianst
 //'@param params list for theta
 //'@import Rcpp
 //'@import RcppArmadillo
@@ -56,6 +57,7 @@ arma::mat exponential_cov(arma::vec x, arma::vec y, List params){
 //'@param x  mat
 //'@param y mat
 //'@param kernel_width double
+//'@useDynLib Gaussianst
 //'@import Rcpp
 //'@import RcppArmadillo
 //'@export
