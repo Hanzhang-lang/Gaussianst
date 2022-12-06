@@ -53,13 +53,17 @@ arma::mat exponential_cov(arma::vec x, arma::vec y, List params){
 
 //'@title Gaussian_kernel func
 //'@description
-//'Calculate the Gaussian_kernel function
-//'@param x  mat
-//'@param y mat
+//'Calculate the Gaussian_kernel function using RcppArmadillo
+//'@param x  mat X(m, p)
+//'@param y mat Y(n, p)
 //'@param kernel_width double
 //'@useDynLib Gaussianst
 //'@import Rcpp
 //'@import RcppArmadillo
+//'@examples
+//'a = matrix(c(1, 2, 3, 4), nrow=2)
+//'b = matrix(c(2, 3, 4, 5), nrow=2)
+//'Gaussian_kernel(a, b, kernel_width = 1.0)
 //'@export
 //[[Rcpp::export()]]
 arma::mat Gaussian_kernel(arma::mat x, arma::mat y, double kernel_width){

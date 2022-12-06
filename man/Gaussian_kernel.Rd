@@ -7,12 +7,17 @@
 Gaussian_kernel(x, y, kernel_width)
 }
 \arguments{
-\item{x}{mat}
+\item{x}{mat X(m, p)}
 
-\item{y}{mat}
+\item{y}{mat Y(n, p)}
 
 \item{kernel_width}{double}
 }
 \description{
-Calculate the Gaussian_kernel function
+Calculate the Gaussian_kernel function using RcppArmadillo
+}
+\examples{
+a = matrix(c(1, 2, 3, 4), nrow=2)
+b = matrix(c(2, 3, 4, 5), nrow=2)
+Gaussian_kernel(a, b, kernel_width = 1.0)
 }

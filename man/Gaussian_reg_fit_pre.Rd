@@ -15,15 +15,15 @@ Gaussian_reg_fit_pre(
 )
 }
 \arguments{
-\item{X}{input matrix for training}
+\item{X}{Input matrix for training}
 
-\item{y}{input value y}
+\item{y}{Input value y}
 
-\item{Xtest}{predict matrix}
+\item{Xtest}{Predict matrix}
 
 \item{alpha}{error parameter, \strong{default:1e-10}}
 
-\item{kernel}{kernel used in gaussian process, by default we use \strong{exponential cov} i.e. RBF kernel}
+\item{kernel}{Kernel used in gaussian process, by default we use \strong{exponential cov} i.e. RBF kernel}
 
 \item{theta}{parameters for kernel function}
 
@@ -36,7 +36,7 @@ a list containing posterior mean, std, posterior sample and marginal likelihood
 One dimensional Gaussian Process Regression
 }
 \details{
-naiive implementation for one dimensional gaussian process regression, which first calculates prior, then uses bayes rules for posterior
+Naiiive implementation for one dimensional gaussian process regression, which first calculates prior, then uses bayes rules for posterior
 }
 \examples{
 x <- seq(-20,20,0.1)
@@ -45,4 +45,7 @@ res = Gaussian_reg_fit_pre(x, y , x, alpha=1e-5, theta=list(1, 1/(3.88)^2), plot
 plot(x, y, type ="l")
 lines(x, res$mu, col="red")
 
+}
+\seealso{
+\code{\link{Gaussian_plot_pos}}
 }

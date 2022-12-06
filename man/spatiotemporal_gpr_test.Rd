@@ -13,15 +13,15 @@ spatiotemporal_gpr_test(
 )
 }
 \arguments{
-\item{K_1_test_tra}{kernel for train_test}
+\item{K_1_test_tra}{kernel for spatial train_test data}
 
-\item{K_1_test_test}{kernel for test}
+\item{K_1_test_test}{kernel for spatial test data}
 
-\item{K_2_test_tra}{kernel for train_test}
+\item{K_2_test_tra}{kernel for temporal train_test data}
 
-\item{K_2_test_test}{kernel for test}
+\item{K_2_test_test}{kernel for temporal test data}
 
-\item{state}{state return from train func}
+\item{state}{State information returned from train function}
 }
 \value{
 prediction

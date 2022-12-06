@@ -7,20 +7,20 @@
 Gaussian_plot_pos(Xtest, Xtrain, ytrain)
 }
 \arguments{
-\item{Xtest}{input test matrix, same as function Gaussian_reg_fit_pre}
+\item{Xtest}{Input test matrix, same as function Gaussian_reg_fit_pre}
 
-\item{Xtrain}{input training matrix X, same as function Gaussian_reg_fit_pre}
+\item{Xtrain}{Input training matrix X, same as function Gaussian_reg_fit_pre}
 
-\item{ytrain}{input training vector y, same as function Gaussian_reg_fit_pre}
+\item{ytrain}{Input training vector y, same as function Gaussian_reg_fit_pre}
 }
 \value{
-plot func, no return variable
+Plot func, no return variable
 }
 \description{
 Plot using result from Gaussian process
 }
 \details{
-plot result after gaussian process regression, including measuring uncertainty
+Plot result after gaussian process regression, including measuring uncertainty
 }
 \examples{
 Xtest = seq(-5, 5, by=10/49)
@@ -28,4 +28,7 @@ theta = list(1, 10)
 Xtrain = c(-4, -3, -2, -1, 1)
 y = sin(Xtrain)
 Gaussian_plot_pos(Xtest, Xtrain, y)
+}
+\seealso{
+\code{\link{Gaussian_reg_fit_pre}}
 }

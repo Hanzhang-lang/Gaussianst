@@ -7,16 +7,16 @@
 spatiotemporal_gpr_train(K_1_tra_tra, K_2_tra_tra, Y_tra, parameters)
 }
 \arguments{
-\item{K_1_tra_tra}{kernel for train}
+\item{K_1_tra_tra}{kernel for spatial train data}
 
-\item{K_2_tra_tra}{kernel for train}
+\item{K_2_tra_tra}{kernel for temporal train data}
 
 \item{Y_tra}{train y}
 
-\item{parameters}{params}
+\item{parameters}{params for spatial kernel, temporal kernel and the sigma. \strong{Suggest:}The kernel width parameters are chosen as the means of pairwise Euclidean distances between training instances for all kernels.}
 }
 \value{
-state information
+State information, which will be used in fit function
 }
 \description{
 training function for spatiotemporal gpr

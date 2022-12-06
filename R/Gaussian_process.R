@@ -3,16 +3,17 @@ Rcpp::sourceCpp("src/Gaussian_arma.cpp")
 
 #'@title Gaussian_reg_fit_pre
 #'@description One dimensional Gaussian Process Regression
-#'@details naiive implementation for one dimensional gaussian process regression, which first calculates prior, then uses bayes rules for posterior
-#' @param X input matrix for training
-#' @param y input value y
-#' @param Xtest predict matrix
+#'@details Naiiive implementation for one dimensional gaussian process regression, which first calculates prior, then uses bayes rules for posterior
+#' @param X Input matrix for training
+#' @param y Input value y
+#' @param Xtest Predict matrix
 #' @param alpha error parameter, \strong{default:1e-10}
-#' @param kernel kernel used in gaussian process, by default we use \strong{exponential cov} i.e. RBF kernel
+#' @param kernel Kernel used in gaussian process, by default we use \strong{exponential cov} i.e. RBF kernel
 #' @param theta parameters for kernel function
 #' @param plot_f whether plot f_prior or not
 #'@importFrom graphics abline lines
 #'@importFrom stats na.omit rnorm
+#'@seealso \code{\link{Gaussian_plot_pos}}
 #' @return a list containing posterior mean, std, posterior sample and marginal likelihood
 #' @export
 #' @examples
@@ -65,14 +66,14 @@ return (list(
 
 #' Plot using result from Gaussian process
 #'@title Gaussian_plot_pos
-#' @param Xtest input test matrix, same as function Gaussian_reg_fit_pre
-#' @param Xtrain input training matrix X, same as function Gaussian_reg_fit_pre
-#' @param ytrain input training vector y, same as function Gaussian_reg_fit_pre
-#' @details  plot result after gaussian process regression, including measuring uncertainty
-#' @return plot func, no return variable
+#' @param Xtest Input test matrix, same as function Gaussian_reg_fit_pre
+#' @param Xtrain Input training matrix X, same as function Gaussian_reg_fit_pre
+#' @param ytrain Input training vector y, same as function Gaussian_reg_fit_pre
+#' @details  Plot result after gaussian process regression, including measuring uncertainty
+#' @return Plot func, no return variable
 #' @import ggplot2
 #' @export
-#'
+#'@seealso \code{\link{Gaussian_reg_fit_pre}}
 #' @examples
 #'Xtest = seq(-5, 5, by=10/49)
 #'theta = list(1, 10)
@@ -93,7 +94,7 @@ p +ylim(-3, 3)+ geom_line(size=0.8) + labs(x="X_test", y='post',title='samples a
 }
 
 
-#' @description main function running for spatiotemporal prediction
+#' @description Main function running for spatiotemporal prediction
 #' @title run(Gaussianst)
 #'@details Implementation for spatiotemporal prediction, including  uncertainty measuring
 #'At the same time, the package can be used to make predictions under three different scenatios:
@@ -106,7 +107,9 @@ p +ylim(-3, 3)+ geom_line(size=0.8) + labs(x="X_test", y='post',title='samples a
 #' @param Xtest_s spatial test matrix
 #' @param Xtest_t temporal test matrix
 #' @param kernel kernel, \strong{default: Gaussian kernel}
-#' @param parameters params for spatial kernel, temporal kernel and the sigma
+#' @param parameters params for spatial kernel, temporal kernel and the sigma. \strong{Suggest:}The kernel width parameters are chosen as the means of pairwise Euclidean distances between training instances for all kernels.
+#' @seealso \code{\link{spatiotemporal_gpr_train}}
+#' @seealso \code{\link{spatiotemporal_gpr_test}}
 #'@references Ak, Çiğdem, et al. "Spatiotemporal prediction of infectious diseases using structured Gaussian processes with application to Crimean–Congo hemorrhagic fever." PLoS neglected tropical diseases 12.8 (2018): e0006737.\url{https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.0006737}
 #' @return prediction list containing posterior mean and variance
 #' @export
@@ -151,12 +154,11 @@ run <- function(Xtrain_s, Xtrain_t, ytrain, Xtest_s, Xtest_t, kernel=Gaussian_ke
 
 #' training function for spatiotemporal gpr
 #'
-#' @param K_1_tra_tra kernel for train
-#' @param K_2_tra_tra kernel for train
+#' @param K_1_tra_tra kernel for spatial train data
+#' @param K_2_tra_tra kernel for temporal train data
 #' @param Y_tra train y
-#' @param parameters params
-#'
-#' @return state information
+#' @param parameters params for spatial kernel, temporal kernel and the sigma. \strong{Suggest:}The kernel width parameters are chosen as the means of pairwise Euclidean distances between training instances for all kernels.
+#' @return State information, which will be used in fit function
 spatiotemporal_gpr_train <- function(K_1_tra_tra, K_2_tra_tra, Y_tra, parameters) {
   svd_1 <- svd(K_1_tra_tra)
   svd_2 <- svd(K_2_tra_tra)
@@ -167,11 +169,11 @@ spatiotemporal_gpr_train <- function(K_1_tra_tra, K_2_tra_tra, Y_tra, parameters
 
 #' fit function for spatiotemporal gpr
 #'
-#' @param K_1_test_tra kernel for train_test
-#' @param K_1_test_test kernel for test
-#' @param K_2_test_tra kernel for train_test
-#' @param K_2_test_test kernel for test
-#' @param state state return from train func
+#' @param K_1_test_tra kernel for spatial train_test data
+#' @param K_1_test_test kernel for spatial test data
+#' @param K_2_test_tra kernel for temporal train_test data
+#' @param K_2_test_test kernel for temporal test data
+#' @param state State information returned from train function
 #'
 #' @return prediction
 spatiotemporal_gpr_test <- function(K_1_test_tra, K_1_test_test, K_2_test_tra, K_2_test_test, state) {

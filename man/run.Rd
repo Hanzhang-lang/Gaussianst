@@ -25,15 +25,15 @@ run(
 
 \item{Xtest_t}{temporal test matrix}
 
-\item{kernel}{kernel, default: Gaussian kernel}
+\item{kernel}{kernel, \strong{default: Gaussian kernel}}
 
-\item{parameters}{params for spatial kernel, temporal kernel and the sigma}
+\item{parameters}{params for spatial kernel, temporal kernel and the sigma. \strong{Suggest:}The kernel width parameters are chosen as the means of pairwise Euclidean distances between training instances for all kernels.}
 }
 \value{
 prediction list containing posterior mean and variance
 }
 \description{
-main function running for spatiotemporal prediction
+Main function running for spatiotemporal prediction
 }
 \details{
 Implementation for spatiotemporal prediction, including  uncertainty measuring
@@ -57,4 +57,9 @@ run(X_train_s, X_train_t, ytrain, X_test_s, X_test_t, Gaussian_kernel, parameter
 }
 \references{
 Ak, Çiğdem, et al. "Spatiotemporal prediction of infectious diseases using structured Gaussian processes with application to Crimean–Congo hemorrhagic fever." PLoS neglected tropical diseases 12.8 (2018): e0006737.\url{https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.0006737}
+}
+\seealso{
+\code{\link{spatiotemporal_gpr_train}}
+
+\code{\link{spatiotemporal_gpr_test}}
 }

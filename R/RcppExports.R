@@ -28,13 +28,17 @@ exponential_cov <- function(x, y, params) {
 
 #'@title Gaussian_kernel func
 #'@description
-#'Calculate the Gaussian_kernel function
-#'@param x  mat
-#'@param y mat
+#'Calculate the Gaussian_kernel function using RcppArmadillo
+#'@param x  mat X(m, p)
+#'@param y mat Y(n, p)
 #'@param kernel_width double
 #'@useDynLib Gaussianst
 #'@import Rcpp
 #'@import RcppArmadillo
+#'@examples
+#'a = matrix(c(1, 2, 3, 4), nrow=2)
+#'b = matrix(c(2, 3, 4, 5), nrow=2)
+#'Gaussian_kernel(a, b, kernel_width = 1.0)
 #'@export
 Gaussian_kernel <- function(x, y, kernel_width) {
     .Call('_Gaussianst_Gaussian_kernel', PACKAGE = 'Gaussianst', x, y, kernel_width)
